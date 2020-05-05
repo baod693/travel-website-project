@@ -1,3 +1,4 @@
+/* Grid Layout */
 .main-info-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -17,6 +18,46 @@
   overflow: auto;
 }
 
+/* Info Section */
+.info header {
+  background: var(--color-dark);
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.info header nav {
+  align-self: center;
+}
+
+.info header a {
+  color: var(--color-white);
+}
+
+/* Showcase  */
+#showcase img {
+  height: 400px;
+}
+
+/* City Info */
+.city-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+}
+
+.city-info .stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.city-info .stats li {
+  padding: 1rem 0;
+}
+
+/* Media Queries */
 @media (max-width: 900px) {
   .main-info-container {
     display: grid;
