@@ -38,6 +38,7 @@ li {
   justify-content: center;
   align-items: flex-start;
   background: url('../images/test.jpg') no-repeat center center/cover;
+  padding: 1rem;
 }
 
 #main-form {

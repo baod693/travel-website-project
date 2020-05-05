@@ -36,6 +36,9 @@
 }
 
 /* Showcase  */
+#showcase {
+  height: 400px;
+}
 #showcase img {
   height: 400px;
 }
@@ -44,13 +47,13 @@
 .city-info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 1rem;
 }
 
 .city-info .stats {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: var(--color-light);
 }
 
 .city-info .stats li {
