@@ -1,0 +1,25 @@
+.main-info-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+  widows: 100vw;
+}
+
+.main-info-container > div {
+  height: 100%;
+}
+
+.main-info-container img {
+  height: 100%;
+}
+
+.main-info-container .info {
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .main-info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
