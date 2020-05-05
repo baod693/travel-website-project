@@ -14,9 +14,6 @@
   height: 100%;
 }
 
-/* .main-info-container .info {
-} */
-
 /* Info Section */
 .info header {
   background: var(--color-dark);
@@ -78,11 +75,23 @@
   height: 300px;
 }
 
+/* Cards */
+.card {
+  background: var(--color-light);
+  margin: 1rem;
+  border-radius: 3px;
+  padding: 1rem;
+}
+
 /* Media Queries */
 @media (min-width: 768px) {
   .main-info-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-info-container .info {
+    overflow: auto;
   }
 
   .map img {
