@@ -77,13 +77,39 @@
 
 /* Cards */
 .card {
-  background: var(--color-light);
+  background: var(--color-secondary);
+  color: var(--color-white);
   margin: 1rem;
   border-radius: 3px;
   padding: 1rem;
+  font-size: 0.75rem;
+  border: 1rem solid var(--color-primary);
+}
+
+.card .card-info {
+  padding: 1rem 0;
+}
+
+.card h3 {
+  text-align: center;
+}
+
+.card ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card ul li {
+  padding: 0.5rem 0;
 }
 
 /* Media Queries */
+@media (min-width: 500px) {
+  .card {
+    font-size: 1rem;
+  }
+}
+
 @media (min-width: 768px) {
   .main-info-container {
     display: grid;
