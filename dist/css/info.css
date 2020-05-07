@@ -7,7 +7,7 @@
   widows: 100vw;
 }
 
-.main-info-container>div {
+.main-info-container > div {
   height: 100%;
 }
 
@@ -78,8 +78,8 @@
 
 /* Map */
 
-.map img {
-  height: 300px;
+#map {
+  height: 500px;
 }
 
 /* Cards */
@@ -127,7 +127,7 @@
   .main-info-container .info {
     overflow: auto;
   }
-  .map img {
+  #map {
     height: 100%;
   }
   .info header {
