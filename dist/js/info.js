@@ -1,3 +1,6 @@
+// UI Vars
+const infoCards = document.querySelector('.info-cards');
+
 // Vars to get data from local storage and parse
 const userInformation = sessionStorage.getItem('userInformation');
 const travelInfo = JSON.parse(userInformation);
@@ -12,19 +15,19 @@ const nightlifeInfoParse = JSON.parse(nightlifeInfoPassJSON);
 const sightSeeingInfoPassJSON = sessionStorage.getItem('sightSeeingInfo');
 const sightSeeingInfoParse = JSON.parse(sightSeeingInfoPassJSON);
 
-function locationStatus(travelData) {
+// Dynamically adds location info in location status section
+(function locationStatus(travelData) {
   const data = travelData.results[0];
   statsCity.innerHTML = data.id;
   statsCountry.innerHTML = data.country_id;
   statsScore.innerHTML = data.score.toFixed(1);
   statsAbout.innerHTML = data.intro;
   showcaseImage.setAttribute('src', data.images[0].source_url);
-}
-locationStatus(travelInfo);
+})(travelInfo);
 
-function createCards(eatInfo, title) {
-  // console.log("ssssssssss");
-  const renderCards = eatInfo.results.map(
+// creates html for cards
+function createCards(data, title) {
+  const renderCards = data.results.map(
     card => `
         <div class="card-info">
         <ul class="info-1">
@@ -37,30 +40,32 @@ function createCards(eatInfo, title) {
         </div>
         `
   );
-  // console.log(eatInfo);
-  // building the cards here
   return `
     <div class="card">
-    <h3>${title}</h3>
-    ${renderCards.join('')}
+      <h3>${title}</h3>
+      ${renderCards.join('')}
     </div>
     `;
 }
-const infoCards = document.querySelector('.info-cards');
-const title = 'Top3: Restaurants';
-const titleHotel = 'Top3: Hotels';
-const titleTour = 'Top3: Tours';
-const titleNightlife = 'Top3: Nightlife';
-const titleSightSeeingInfo = 'Top3: Sightseeing';
-// add variables here........................................
-infoCards.innerHTML = createCards(eatInfoParse, title);
-infoCards.innerHTML += createCards(hotelInfoParse, titleHotel);
-infoCards.innerHTML += createCards(tourInfoParse, titleTour);
-infoCards.innerHTML += createCards(nightlifeInfoParse, titleNightlife);
-infoCards.innerHTML += createCards(sightSeeingInfoParse, titleSightSeeingInfo);
 
+// titles for each card
+const titleEats = 'Top3: Restaurants';
+const titleHotels = 'Top3: Hotels';
+const titleTours = 'Top3: Tours';
+const titleNightlife = 'Top3: Nightlife';
+const titleSights = 'Top3: Sightseeing';
+
+// Call create cards function to create html for each card
+infoCards.innerHTML = createCards(eatInfoParse, titleEats);
+infoCards.innerHTML += createCards(hotelInfoParse, titleHotels);
+infoCards.innerHTML += createCards(tourInfoParse, titleTours);
+infoCards.innerHTML += createCards(nightlifeInfoParse, titleNightlife);
+infoCards.innerHTML += createCards(sightSeeingInfoParse, titleSights);
+
+// latitude and Longitude from location data to enter into google maps
 const lat = travelInfo.results[0].coordinates.latitude;
 const lng = travelInfo.results[0].coordinates.longitude;
+
 // google maps
 let map;
 function initMap(data) {
@@ -69,17 +74,3 @@ function initMap(data) {
     zoom: 8,
   });
 }
-
-// Create the script tag, set the appropriate attributes
-// var script = document.createElement('script');
-// script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
-// script.defer = true;
-// script.async = true;
-
-// // Attach your callback function to the `window` object
-// window.initMap = function() {
-//   // JS API is loaded and available
-// };
-
-// // Append the 'script' element to 'head'
-// document.head.appendChild(script);
