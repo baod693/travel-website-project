@@ -1,3 +1,4 @@
+// Vars to get data from local storage and parse
 const userInformation = sessionStorage.getItem('userInformation');
 const travelInfo = JSON.parse(userInformation);
 const eatInfoPassJSON = sessionStorage.getItem('eatInfo');
@@ -11,8 +12,8 @@ const nightlifeInfoParse = JSON.parse(nightlifeInfoPassJSON);
 const sightSeeingInfoPassJSON = sessionStorage.getItem('sightSeeingInfo');
 const sightSeeingInfoParse = JSON.parse(sightSeeingInfoPassJSON);
 
-function locationStatus(travelInfo) {
-  const data = travelInfo.results[0];
+function locationStatus(travelData) {
+  const data = travelData.results[0];
   statsCity.innerHTML = data.id;
   statsCountry.innerHTML = data.country_id;
   statsScore.innerHTML = data.score.toFixed(1);

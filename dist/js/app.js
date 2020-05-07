@@ -12,18 +12,19 @@ const cardDiv = document.querySelector('.info-cards');
 // handle user submit
 function handleButtonClick(e) {
   e.preventDefault();
-  let searchInputValue = userInput.value; // assigned user input value to searchInputValue
-  // cardInfo(cardInformation);
-  // console.log(searchInputValue);
+  let searchInputValue = userInput.value;
+  // capitalize first letter of user input value
   searchInputValue =
     searchInputValue.charAt(0).toUpperCase() + searchInputValue.slice(1);
-  // passing the input value ${searchInputValue} to the function eatInfo
+
+  // Call vars to fetch api request and pass user input value
   eatInfo(searchInputValue);
   hotelInfo(searchInputValue);
   tourInfo(searchInputValue);
   nightlifeInfo(searchInputValue);
   sightSeeingInfo(searchInputValue);
-  // const urlEncoded = encodedURIComponent(searchInputValue);  //urlEncoded will not work due to api search input New_York_City
+
+  // API request: location
   const endpoint = `https://www.triposo.com/api/20200405/location.json?id=${searchInputValue}&fields=all&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
@@ -37,71 +38,70 @@ function handleButtonClick(e) {
     .catch(err => console.log(err));
 }
 
+// API request: eats
 function eatInfo(cardInformation) {
-  console.log(cardInformation);
-  // top 3 interesting finds
   const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=eatingout&count=3&fields=id,name,score,price_tier&order_by=-eatingout_score&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
     .then(data => {
       const eatInfoJSON = JSON.stringify(data);
-      sessionStorage.setItem('eatInfo', eatInfoJSON); // takes the poi data and save in the session storage
+      sessionStorage.setItem('eatInfo', eatInfoJSON);
     })
     .catch(err => console.log(err));
 }
-// listens for user submit event,
-btnSubmit.addEventListener('click', handleButtonClick);
 
+// API request: hotels
 function hotelInfo(cardInformation) {
-  // top 3 hotels
   const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=hotels&count=3&fields=id,name,score,price_tier&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
     .then(data => {
       const hotelInfoJSON = JSON.stringify(data);
-      sessionStorage.setItem('hotelInfo', hotelInfoJSON); // takes the poi data and save in the session storage
+      sessionStorage.setItem('hotelInfo', hotelInfoJSON);
     })
     .catch(err => console.log(err));
 }
 
+// API request: tours
 function tourInfo(cardInformation) {
-  // top 3 tours
   const endpoint = `https://www.triposo.com/api/20200405/tour.json?location_ids=${cardInformation}&count=3&fields=id,name,score,price,price_is_per_person,vendor,intro,tag_labels&order_by=-score&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
     .then(data => {
       const tourInfoJSON = JSON.stringify(data);
-      sessionStorage.setItem('tourInfo', tourInfoJSON); // takes the poi data and save in the session storage
+      sessionStorage.setItem('tourInfo', tourInfoJSON);
     })
     .catch(err => console.log(err));
 }
 
+// API request: nightlife
 function nightlifeInfo(cardInformation) {
-  // top 3 night life
   const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=nightlife&count=3&fields=id,name,score,price_tier&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
     .then(data => {
       const nightlifeInfoJSON = JSON.stringify(data);
-      sessionStorage.setItem('nightLifeInfo', nightlifeInfoJSON); // takes the poi data and save in the session storage
+      sessionStorage.setItem('nightLifeInfo', nightlifeInfoJSON);
     })
     .catch(err => console.log(err));
 }
 
+// API request: sightseeing
 function sightSeeingInfo(cardInformation) {
-  // top 3 sightSeeing information
   const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=sightseeing&bookable=1&count=3&fields=id,name,score,intro,booking_info&order_by=-score&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
     .then(data => {
-      console.log(cardInformation);
       const sightSeeingInfoJSON = JSON.stringify(data);
-      sessionStorage.setItem('sightSeeingInfo', sightSeeingInfoJSON); // takes the poi data and save in the session storage
+      sessionStorage.setItem('sightSeeingInfo', sightSeeingInfoJSON);
     })
     .catch(err => console.log(err));
 }
+
+// listens for user submit event,
+btnSubmit.addEventListener('click', handleButtonClick);
