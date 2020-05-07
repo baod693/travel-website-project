@@ -1,4 +1,5 @@
 /* Grid Layout */
+
 .main-info-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,7 +7,7 @@
   widows: 100vw;
 }
 
-.main-info-container > div {
+.main-info-container>div {
   height: 100%;
 }
 
@@ -15,6 +16,7 @@
 }
 
 /* Info Section */
+
 .info header {
   background: var(--color-dark);
   color: var(--color-white);
@@ -38,14 +40,17 @@
 }
 
 /* Showcase  */
+
 #showcase {
   height: 400px;
 }
+
 #showcase img {
   height: 400px;
 }
 
 /* City Info */
+
 .city-info {
   display: grid;
   grid-template-columns: 1fr;
@@ -63,6 +68,7 @@
 }
 
 /* About */
+
 .about {
   background: var(--color-secondary);
   color: var(--color-white);
@@ -71,11 +77,13 @@
 }
 
 /* Map */
+
 .map img {
   height: 300px;
 }
 
 /* Cards */
+
 .card {
   background: var(--color-secondary);
   color: var(--color-white);
@@ -100,10 +108,11 @@
 }
 
 .card ul li {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 
 /* Media Queries */
+
 @media (min-width: 500px) {
   .card {
     font-size: 1rem;
@@ -115,15 +124,12 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-
   .main-info-container .info {
     overflow: auto;
   }
-
   .map img {
     height: 100%;
   }
-
   .info header {
     flex-direction: row;
     justify-content: space-between;
@@ -134,7 +140,6 @@
   .city-info {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .city-info .stats {
     border-bottom: 2px solid var(--color-secondary);
   }
