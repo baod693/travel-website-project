@@ -20,7 +20,6 @@
 }
 
 /* Info Section */
-
 .info header {
   background: var(--color-dark);
   color: var(--color-white);
@@ -44,7 +43,6 @@
 }
 
 /* Showcase  */
-
 #showcase {
   height: 400px;
 }
@@ -54,7 +52,6 @@
 }
 
 /* City Info */
-
 .city-info {
   display: grid;
   grid-template-columns: 1fr;
@@ -72,22 +69,23 @@
 }
 
 /* About */
-
 .about {
   background: var(--color-secondary);
   color: var(--color-white);
-  text-align: left;
+  text-align: center;
+  padding: 1rem;
+}
+
+.about p {
   padding: 1rem;
 }
 
 /* Map */
-
 #map {
   height: 500px;
 }
 
 /* Cards */
-
 .card {
   background: var(--color-secondary);
   color: var(--color-white);
@@ -119,7 +117,6 @@
 }
 
 /* Media Queries */
-
 @media (min-width: 500px) {
   .card {
     font-size: 1rem;
