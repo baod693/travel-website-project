@@ -1,5 +1,9 @@
-/* Grid Layout */
+.logo span {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+}
 
+/* Grid Layout */
 .main-info-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -87,11 +91,11 @@
 .card {
   background: var(--color-secondary);
   color: var(--color-white);
-  margin: 1rem;
+  margin: 0.5rem;
   border-radius: 3px;
   padding: 1rem;
   font-size: 0.75rem;
-  border: 1rem solid var(--color-primary);
+  border: 5px solid var(--color-primary);
 }
 
 .card .card-info {
@@ -103,12 +107,15 @@
 }
 
 .card ul {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: left;
+  font-size: 0.95rem;
 }
 
 .card ul li {
-  padding: 0.25rem 0;
+  padding: 1rem;
+  color: var(--color-primary);
 }
 
 /* Media Queries */
