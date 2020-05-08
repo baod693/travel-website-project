@@ -31,11 +31,9 @@ function createCards(data, title) {
     card => `
         <div class="card-info">
         <ul class="info-1">
-        <li>Name: <span class="name-span1">${card.name}</span></li>
-        <li>Price Tier: <span class="price-span1">${card.price_tier}</span></li>
-        <li>Score: <span class="score-span1">${card.score.toFixed(
-          1
-        )}</span></li>
+        <li>Name: <span>${card.name}</span></li>
+        <li>Price Tier: <span>${card.price_tier}</span></li>
+        <li>Score: <span>${card.score.toFixed(1)}</span></li>
         </ul>
         </div>
         `

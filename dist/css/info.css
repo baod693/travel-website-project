@@ -112,8 +112,12 @@
 }
 
 .card ul li {
-  padding: 1rem;
+  padding: 0.25rem 0;
   color: var(--color-primary);
+}
+
+.card ul li span {
+  color: var(--color-white);
 }
 
 /* Media Queries */
