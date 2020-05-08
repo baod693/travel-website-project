@@ -10,34 +10,35 @@ const submitForm = document.querySelector('#main-form');
 const cardDiv = document.querySelector('.info-cards');
 const container = document.querySelector('.container');
 
-
-
-
 // handle user submit
 function handleButtonClick(e) {
   e.preventDefault();
-  let searchInputValue = userInput.value.replace(/ /g, '_').replace(/\./g, '2e').replace(/,/g, '2C');
+  let searchInputValue = userInput.value
+    .replace(/ /g, '_')
+    .replace(/\./g, '2e')
+    .replace(/,/g, '2C');
   // capitalize first letter of user input value
   searchInputValue =
     searchInputValue.charAt(0).toUpperCase() + searchInputValue.slice(1);
-    
-    function titleCase(str) {
-      var splitStr = str.toLowerCase().split('_');
-    
-      for (var i = 0; i < splitStr.length; i++) {
-          // You do not need to check if i is larger than splitStr length, as your for does that for you
-          // Assign it back to the array
-          splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-      }
-      // Directly return the joined string
-      return splitStr.join('_'); 
-   }
-   titleCase(searchInputValue);
+
+  function titleCase(str) {
+    const splitStr = str.toLowerCase().split('_');
+
+    for (let i = 0; i < splitStr.length; i++) {
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    // Directly return the joined string
+    return splitStr.join('_');
+  }
+  titleCase(searchInputValue);
   //  console.log(searchInputValue);
   //  const afterMath = searchInputValue;
-   console.log('test input value');
+  console.log('test input value');
   //  console.log(titleCase(searchInputValue));
-   const magicCaps = titleCase(searchInputValue);
+  const magicCaps = titleCase(searchInputValue);
 
   //  document.write(titleCase("I'm a little tea pot"));
   // Call vars to fetch api request and pass user input value

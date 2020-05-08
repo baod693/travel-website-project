@@ -20,6 +20,10 @@
 }
 
 /* Info Section */
+.info {
+  grid-area: info;
+}
+
 .info header {
   background: var(--color-dark);
   color: var(--color-white);
@@ -83,6 +87,7 @@
 /* Map */
 #map {
   height: 500px;
+  grid-area: map;
 }
 
 /* Cards */
@@ -119,6 +124,16 @@
   color: var(--color-white);
 }
 
+/* Footer */
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  grid-area: footer;
+}
+
 /* Media Queries */
 @media (min-width: 500px) {
   .card {
@@ -126,11 +141,23 @@
   }
 }
 
+@media (max-width: 768px) {
+  .main-info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: 'info' 'map' 'footer';
+  }
+}
+
 @media (min-width: 768px) {
   .main-info-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 'info map' 'footer footer';
   }
+
   .main-info-container .info {
     overflow: auto;
   }
