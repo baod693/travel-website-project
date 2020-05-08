@@ -10,23 +10,45 @@ const submitForm = document.querySelector('#main-form');
 const cardDiv = document.querySelector('.info-cards');
 const container = document.querySelector('.container');
 
+
+
+
 // handle user submit
 function handleButtonClick(e) {
   e.preventDefault();
-  let searchInputValue = userInput.value;
+  let searchInputValue = userInput.value.replace(/ /g, '_').replace(/\./g, '2e').replace(/,/g, '2C');
   // capitalize first letter of user input value
   searchInputValue =
     searchInputValue.charAt(0).toUpperCase() + searchInputValue.slice(1);
+    
+    function titleCase(str) {
+      var splitStr = str.toLowerCase().split('_');
+    
+      for (var i = 0; i < splitStr.length; i++) {
+          // You do not need to check if i is larger than splitStr length, as your for does that for you
+          // Assign it back to the array
+          splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+      }
+      // Directly return the joined string
+      return splitStr.join('_'); 
+   }
+   titleCase(searchInputValue);
+  //  console.log(searchInputValue);
+  //  const afterMath = searchInputValue;
+   console.log('test input value');
+  //  console.log(titleCase(searchInputValue));
+   const magicCaps = titleCase(searchInputValue);
 
+  //  document.write(titleCase("I'm a little tea pot"));
   // Call vars to fetch api request and pass user input value
-  eatInfo(searchInputValue);
-  hotelInfo(searchInputValue);
-  tourInfo(searchInputValue);
-  nightlifeInfo(searchInputValue);
-  sightSeeingInfo(searchInputValue);
+  eatInfo(magicCaps);
+  hotelInfo(magicCaps);
+  tourInfo(magicCaps);
+  nightlifeInfo(magicCaps);
+  sightSeeingInfo(magicCaps);
 
   // API request: location
-  const endpoint = `https://www.triposo.com/api/20200405/location.json?id=${searchInputValue}&fields=all&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
+  const endpoint = `https://www.triposo.com/api/20200405/location.json?id=${magicCaps}&fields=all&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())
@@ -97,7 +119,7 @@ function nightlifeInfo(cardInformation) {
 
 // API request: sightseeing
 function sightSeeingInfo(cardInformation) {
-  const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=sightseeing&bookable=1&count=3&fields=id,name,score,intro,booking_info&order_by=-score&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
+  const endpoint = `https://www.triposo.com/api/20200405/poi.json?location_id=${cardInformation}&tag_labels=sightseeing&count=3&fields=all&account=3XPHWAVV&token=ubjfil8myjnlk6z1t6m3dehs96y9upct`;
   const searchPromise = fetch(endpoint);
   searchPromise
     .then(response => response.json())

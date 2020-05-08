@@ -31,7 +31,7 @@ function createCards(data, title) {
     card => `
         <div class="card-info">
         <ul class="info-1">
-        <li>Name: <span>${card.name}</span></li>
+        <li>Name: <span>${card.name ? card.name : card.id}</span></li>
         <li>Score: <span>${card.score.toFixed(1)}</span></li>
         </ul>
         </div>
