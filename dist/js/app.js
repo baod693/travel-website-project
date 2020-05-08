@@ -30,10 +30,13 @@ function handleButtonClick(e) {
   searchPromise
     .then(response => response.json())
     .then(data => {
-      // console.log(searchInputValue); //testing to console log searchinputvalue
       const userSelectionJSON = JSON.stringify(data);
-      sessionStorage.setItem('userInformation', userSelectionJSON); // takes the fetched data and save in the session storage
-      window.location.href = 'info.html';
+      sessionStorage.setItem('userInformation', userSelectionJSON);
+      document.querySelector('.container').style.backgroundImage =
+        'url(./images/dg.png)';
+      setTimeout(function() {
+        window.location.href = 'info.html';
+      }, 2000);
     })
     .catch(err => console.log(err));
 }
