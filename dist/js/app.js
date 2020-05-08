@@ -34,13 +34,8 @@ function handleButtonClick(e) {
     return splitStr.join('_');
   }
   titleCase(searchInputValue);
-  //  console.log(searchInputValue);
-  //  const afterMath = searchInputValue;
-  console.log('test input value');
-  //  console.log(titleCase(searchInputValue));
   const magicCaps = titleCase(searchInputValue);
 
-  //  document.write(titleCase("I'm a little tea pot"));
   // Call vars to fetch api request and pass user input value
   eatInfo(magicCaps);
   hotelInfo(magicCaps);
@@ -62,9 +57,16 @@ function handleButtonClick(e) {
       btnSubmit.textContent = 'LOADING.........';
       setTimeout(function() {
         window.location.href = 'info.html';
-      }, 1000);
+      }, 2000);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const div = document.createElement('div');
+      div.className = 'alert';
+      const para = document.createElement('p');
+      para.textContent = 'Please Enter A City';
+      div.appendChild(para);
+      container.insertBefore(div, submitForm);
+    });
 }
 
 // API request: eats
