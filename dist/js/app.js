@@ -59,9 +59,10 @@ function handleButtonClick(e) {
       sessionStorage.setItem('userInformation', userSelectionJSON);
       const bgImg = data.results[0].images[1].source_url;
       container.style.backgroundImage = `url(${bgImg})`;
+      btnSubmit.textContent = 'LOADING.........';
       setTimeout(function() {
         window.location.href = 'info.html';
-      }, 2000);
+      }, 1000);
     })
     .catch(err => console.log(err));
 }
