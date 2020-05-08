@@ -34,11 +34,11 @@ function handleButtonClick(e) {
       console.log(data);
       const userSelectionJSON = JSON.stringify(data);
       sessionStorage.setItem('userInformation', userSelectionJSON);
-      // const bgImg = data.results[0].images[1].source_url;
-      container.style.backgroundImage = "url('images/map.jpg')";
+      const bgImg = data.results[0].images[1].source_url;
+      container.style.backgroundImage = `url(${bgImg})`;
       setTimeout(function() {
         window.location.href = 'info.html';
-      }, 1000);
+      }, 2000);
     })
     .catch(err => console.log(err));
 }
