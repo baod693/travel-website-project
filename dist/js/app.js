@@ -8,6 +8,7 @@ const btnSubmit = document.querySelector('#btn-submit');
 const userInput = document.querySelector('#search');
 const submitForm = document.querySelector('#main-form');
 const cardDiv = document.querySelector('.info-cards');
+const container = document.querySelector('.container');
 
 // handle user submit
 function handleButtonClick(e) {
@@ -30,13 +31,14 @@ function handleButtonClick(e) {
   searchPromise
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       const userSelectionJSON = JSON.stringify(data);
       sessionStorage.setItem('userInformation', userSelectionJSON);
-      document.querySelector('.container').style.backgroundImage =
-        'url(./images/dg.png)';
+      // const bgImg = data.results[0].images[1].source_url;
+      container.style.backgroundImage = "url('images/map.jpg')";
       setTimeout(function() {
         window.location.href = 'info.html';
-      }, 2000);
+      }, 1000);
     })
     .catch(err => console.log(err));
 }
