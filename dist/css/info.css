@@ -134,6 +134,10 @@ footer {
   grid-area: footer;
 }
 
+footer a {
+  color: var(--color-primary);
+}
+
 /* Media Queries */
 @media (min-width: 500px) {
   .card {
