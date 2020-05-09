@@ -24,7 +24,7 @@ function handleButtonClick(e) {
   function titleCase(str) {
     const splitStr = str.toLowerCase().split('_');
 
-    for (let i = 0; i < splitStr.length; i++) {
+    for (let i = 0; i < splitStr.length; i += 1) {
       // You do not need to check if i is larger than splitStr length, as your for does that for you
       // Assign it back to the array
       splitStr[i] =
@@ -60,12 +60,13 @@ function handleButtonClick(e) {
       }, 2000);
     })
     .catch(err => {
-      const div = document.createElement('div');
-      div.className = 'alert';
-      const para = document.createElement('p');
-      para.textContent = 'Please Enter A City';
-      div.appendChild(para);
-      container.insertBefore(div, submitForm);
+      const alertDiv = document.querySelector('.alert');
+      alertDiv.classList += ' show';
+      alertDiv.style.opacity = 1;
+      setTimeout(function() {
+        alertDiv.style.opacity = 0;
+        alertDiv.classList.remove('show');
+      }, 2000);
     });
 }
 
