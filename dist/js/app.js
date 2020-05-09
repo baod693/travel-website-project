@@ -49,7 +49,6 @@ function handleButtonClick(e) {
   searchPromise
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       const userSelectionJSON = JSON.stringify(data);
       sessionStorage.setItem('userInformation', userSelectionJSON);
       const bgImg = data.results[0].images[1].source_url;
@@ -66,7 +65,7 @@ function handleButtonClick(e) {
       setTimeout(function() {
         alertDiv.style.opacity = 0;
         alertDiv.classList.remove('show');
-      }, 2000);
+      }, 3000);
     });
 }
 

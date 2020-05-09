@@ -22,8 +22,22 @@ const sightSeeingInfoParse = JSON.parse(sightSeeingInfoPassJSON);
   statsCountry.innerHTML = data.country_id;
   statsScore.innerHTML = data.score.toFixed(1);
   statsAbout.innerHTML = data.intro;
-  showcaseImage.setAttribute('src', data.images[0].source_url);
+  showcaseImage.setAttribute('src', changeImg(travelData));
 })(travelInfo);
+
+function changeImg(data) {
+  let i = 0;
+  const imageArr = data.results[0].images;
+  console.log(imageArr);
+  document.slide.src = imageArr[i].source_url;
+  if (i < imageArr.length - 1) {
+    i += 1;
+  } else {
+    i = 0;
+  }
+
+  setTimeout('changeImg()', 2000);
+}
 
 // creates html for cards
 function createCards(data, title) {
