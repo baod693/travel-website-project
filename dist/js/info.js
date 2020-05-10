@@ -15,6 +15,17 @@ const nightlifeInfoParse = JSON.parse(nightlifeInfoPassJSON);
 const sightSeeingInfoPassJSON = sessionStorage.getItem('sightSeeingInfo');
 const sightSeeingInfoParse = JSON.parse(sightSeeingInfoPassJSON);
 
+function changeImg(data) {
+  const arrImages = data.results[0].images;
+  let num = 0; // start number
+  const len = arrImages.length - 1; // limit
+  setInterval(function() {
+    // interval changer
+    showcaseImage.src = `${arrImages[num].source_url}`; // change picture
+    num = num === len ? 0 : (num += 1); // reset if last image reached
+  }, 2000);
+}
+
 // Dynamically adds location info in location status section
 (function locationStatus(travelData) {
   const data = travelData.results[0];
@@ -22,22 +33,8 @@ const sightSeeingInfoParse = JSON.parse(sightSeeingInfoPassJSON);
   statsCountry.innerHTML = data.country_id;
   statsScore.innerHTML = data.score.toFixed(1);
   statsAbout.innerHTML = data.intro;
-  showcaseImage.setAttribute('src', changeImg(travelData));
+  showcaseImage.src = changeImg(travelData);
 })(travelInfo);
-
-function changeImg(data) {
-  let i = 0;
-  const imageArr = data.results[0].images;
-  console.log(imageArr);
-  document.slide.src = imageArr[i].source_url;
-  if (i < imageArr.length - 1) {
-    i += 1;
-  } else {
-    i = 0;
-  }
-
-  setTimeout('changeImg()', 2000);
-}
 
 // creates html for cards
 function createCards(data, title) {
@@ -79,7 +76,7 @@ const lng = travelInfo.results[0].coordinates.longitude;
 
 // google maps
 let map;
-function initMap(data) {
+function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat, lng },
     zoom: 8,
